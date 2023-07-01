@@ -7,16 +7,19 @@ import OSM from "ol/source/OSM";
 import "ol/ol.css";
 import "./style.css";
 
-const map = new Map({
-  layers: [
-    new TileLayer({
-      source: new OSM(),
-      visible: true,
-    })
-  ],
-  target: 'map',
-  view: new View({
-    center: fromLonLat([121.316534, -2.44565]),
-    zoom: 5
-  }),
+const view = new View({
+  center: fromLonLat([121.316534, -2.44565]),
+  zoom: 5
 });
+
+const map = new Map({
+  target: 'map',
+  view: view,
+});
+
+const osmTile = new TileLayer({
+  source: new OSM(),
+  visible: true,
+});
+
+map.addLayer(osmTile);
