@@ -1,5 +1,7 @@
 import Map from "ol/Map";
 import View from "ol/View";
+import MousePosition from "ol/control/MousePosition";
+import { format } from "ol/coordinate";
 import ScaleLine from "ol/control/ScaleLine";
 import TileLayer from "ol/layer/Tile";
 import { fromLonLat } from 'ol/proj';
@@ -24,6 +26,16 @@ const osmTile = new TileLayer({
 });
 
 map.addLayer(osmTile);
+
+const mousePosition = new MousePosition({
+  className: 'mouse-position',
+  coordinateFormat: function (coordinate) {
+    return format(coordinate, '{y}, {x}', 6);
+  },
+  projection: 'EPSG:4326',
+});
+
+map.addControl(mousePosition);
 
 const scaleControl = new ScaleLine({
   bar: true,

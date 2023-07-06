@@ -1,3 +1,3 @@
 ### Belajar Openlayers Javascript
 
-![Skrinsut aplikasi](/skrinsut/app.png "Skrinsut aplikasi")
+![Skrinsut aplikasi](/skrinsut/app.jpg "Skrinsut aplikasi")
