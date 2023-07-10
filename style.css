@@ -70,3 +70,12 @@ body{
 .ol-popup-closer:after {
   content: "[x]";
 }
+
+.home-control {
+  left: .5em;
+  top: 65px;
+}
+
+.ol-touch .home-control {
+  top: 80px;
+}

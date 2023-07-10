@@ -1,6 +1,7 @@
 import Map from "ol/Map";
 import Overlay from "ol/Overlay";
 import View from "ol/View";
+import { defaults as defaultControls } from 'ol/control';
 import MousePosition from "ol/control/MousePosition";
 import { format } from "ol/coordinate";
 import ScaleLine from "ol/control/ScaleLine";
@@ -8,15 +9,21 @@ import TileLayer from "ol/layer/Tile";
 import { fromLonLat, toLonLat } from 'ol/proj';
 import OSM from "ol/source/OSM";
 
+import HomeControl from "./control/HomeControl";
+
 import "ol/ol.css";
 import "./style.css";
 
+const defaultLocation = fromLonLat([121.316534, -2.44565]);
+const defaultZoom = 5;
+
 const view = new View({
-  center: fromLonLat([121.316534, -2.44565]),
-  zoom: 5
+  center: defaultLocation,
+  zoom: defaultZoom
 });
 
 const map = new Map({
+  controls: defaultControls(),
   target: 'map',
   view: view,
 });
@@ -44,6 +51,13 @@ const scaleControl = new ScaleLine({
 });
 
 map.addControl(scaleControl);
+
+const homeControl = new HomeControl({
+  center: defaultLocation,
+  zoom: defaultZoom,
+});
+
+map.addControl(homeControl);
 
 const container = document.getElementById('popup');
 const content = document.getElementById('popup-content');
