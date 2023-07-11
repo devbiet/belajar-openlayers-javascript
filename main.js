@@ -2,6 +2,7 @@ import Map from "ol/Map";
 import Overlay from "ol/Overlay";
 import View from "ol/View";
 import { defaults as defaultControls } from 'ol/control';
+import FullScreenControl from 'ol/control/FullScreen';
 import MousePosition from "ol/control/MousePosition";
 import { format } from "ol/coordinate";
 import ScaleLine from "ol/control/ScaleLine";
@@ -58,6 +59,10 @@ const homeControl = new HomeControl({
 });
 
 map.addControl(homeControl);
+
+const fullScreenControl = new FullScreenControl();
+
+map.addControl(fullScreenControl);
 
 const container = document.getElementById('popup');
 const content = document.getElementById('popup-content');
